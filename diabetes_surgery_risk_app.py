@@ -21,6 +21,13 @@ import warnings
 from pathlib import Path
 import time
 
+# Import required scikit-learn components
+try:
+    from sklearn.preprocessing import StandardScaler, LabelEncoder
+except ImportError as e:
+    st.error(f"Missing required dependency: {e}")
+    st.stop()
+
 # Configure page
 st.set_page_config(
     page_title="🏥 Diabetes Surgery Risk Assessment",
@@ -98,33 +105,85 @@ def load_models():
         
         # Verify the models directory exists
         if not models_path.exists():
-            raise FileNotFoundError(f"Models directory not found at {models_path}")
+            st.error(f"Models directory not found at {models_path}")
+            st.error("Please ensure you have cloned the repository with all files.")
+            return None, None, None, None, None
+        
+        # Check if all required files exist
+        required_files = [
+            "best_model_xgboost_gpu.pkl",
+            "scaler.pkl", 
+            "label_encoder.pkl",
+            "feature_names.txt",
+            "model_evaluation_results.json"
+        ]
+        
+        missing_files = []
+        for file in required_files:
+            if not (models_path / file).exists():
+                missing_files.append(file)
+        
+        if missing_files:
+            st.error(f"Missing required model files: {', '.join(missing_files)}")
+            return None, None, None, None, None
         
         # Load the best model (XGBoost GPU)
-        model = joblib.load(models_path / "best_model_xgboost_gpu.pkl")
+        try:
+            model = joblib.load(models_path / "best_model_xgboost_gpu.pkl")
+        except Exception as e:
+            st.error(f"Error loading XGBoost model: {e}")
+            return None, None, None, None, None
         
         # Load preprocessors
-        scaler = joblib.load(models_path / "scaler.pkl")
-        label_encoder = joblib.load(models_path / "label_encoder.pkl")
+        try:
+            scaler = joblib.load(models_path / "scaler.pkl")
+            label_encoder = joblib.load(models_path / "label_encoder.pkl")
+        except Exception as e:
+            st.error(f"Error loading preprocessors: {e}")
+            return None, None, None, None, None
         
         # Load feature names
-        with open(models_path / "feature_names.txt", 'r') as f:
-            content = f.read().strip()
-            # Split by actual newlines or escaped newlines
-            if '\\n' in content:
-                feature_names = [name.strip() for name in content.split('\\n') if name.strip()]
-            else:
-                feature_names = [line.strip() for line in content.split('\n') if line.strip()]
+        try:
+            with open(models_path / "feature_names.txt", 'r') as f:
+                content = f.read().strip()
+                # Split by actual newlines or escaped newlines
+                if '\\n' in content:
+                    feature_names = [name.strip() for name in content.split('\\n') if name.strip()]
+                else:
+                    feature_names = [line.strip() for line in content.split('\n') if line.strip()]
+            
+            if len(feature_names) == 0:
+                raise ValueError("No feature names found in feature_names.txt")
+                
+        except Exception as e:
+            st.error(f"Error loading feature names: {e}")
+            return None, None, None, None, None
         
         # Load model evaluation results
-        with open(models_path / "model_evaluation_results.json", 'r') as f:
-            model_results = json.load(f)
+        try:
+            with open(models_path / "model_evaluation_results.json", 'r') as f:
+                model_results = json.load(f)
+        except Exception as e:
+            st.error(f"Error loading model evaluation results: {e}")
+            return None, None, None, None, None
         
+        # Verify model compatibility
+        try:
+            # Test prediction with dummy data
+            dummy_data = np.zeros((1, len(feature_names)))
+            scaled_dummy = scaler.transform(dummy_data)
+            test_pred = model.predict(scaled_dummy)
+            test_proba = model.predict_proba(scaled_dummy)
+        except Exception as e:
+            st.error(f"Model compatibility test failed: {e}")
+            return None, None, None, None, None
+        
+        st.success("✅ All models loaded successfully!")
         return model, scaler, label_encoder, feature_names, model_results
         
     except Exception as e:
-        st.error(f"Error loading models: {str(e)}")
-        st.error("Please ensure the models directory exists and contains all required files.")
+        st.error(f"Unexpected error loading models: {str(e)}")
+        st.error("Please ensure all required dependencies are installed and model files are accessible.")
         return None, None, None, None, None
 
 def get_feature_info():
