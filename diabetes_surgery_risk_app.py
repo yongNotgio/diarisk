@@ -93,11 +93,12 @@ st.markdown("""
 def load_models():
     """Load all required models and preprocessors"""
     try:
-        # Path to models directory
-        models_path = Path("../models")
+        # Path to models directory in the current repository
+        models_path = Path(__file__).parent / "models"
+        
+        # Verify the models directory exists
         if not models_path.exists():
-            # Try absolute path
-            models_path = Path("D:/User/Downloads/DiaTrack/DFU_Healing_ML/DiaTrack_Risk_for_Surgery/models")
+            raise FileNotFoundError(f"Models directory not found at {models_path}")
         
         # Load the best model (XGBoost GPU)
         model = joblib.load(models_path / "best_model_xgboost_gpu.pkl")
