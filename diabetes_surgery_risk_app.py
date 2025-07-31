@@ -39,59 +39,172 @@ st.set_page_config(
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
-# Custom CSS for better styling
+# Custom CSS for better styling - Streamlit Cloud compatible
 st.markdown("""
 <style>
-    .main-header {
-        font-size: 2.5rem;
-        color: #1f77b4;
-        text-align: center;
-        margin-bottom: 2rem;
-        font-weight: bold;
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* Global styles */
+    .stApp {
+        font-family: 'Inter', sans-serif !important;
     }
+    
+    /* Main header styling */
+    .main-header {
+        font-size: 2.5rem !important;
+        color: #1f77b4 !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        font-weight: 700 !important;
+        font-family: 'Inter', sans-serif !important;
+    }
+    
+    /* Risk assessment cards */
     .risk-high {
-        background-color: #ffebee;
-        border-left: 5px solid #f44336;
-        padding: 1rem;
-        border-radius: 5px;
-        margin: 1rem 0;
+        background-color: #ffebee !important;
+        border-left: 5px solid #f44336 !important;
+        padding: 1.5rem !important;
+        border-radius: 10px !important;
+        margin: 1rem 0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
     .risk-moderate {
-        background-color: #fff3e0;
-        border-left: 5px solid #ff9800;
-        padding: 1rem;
-        border-radius: 5px;
-        margin: 1rem 0;
+        background-color: #fff3e0 !important;
+        border-left: 5px solid #ff9800 !important;
+        padding: 1.5rem !important;
+        border-radius: 10px !important;
+        margin: 1rem 0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
     .risk-low {
-        background-color: #e8f5e8;
-        border-left: 5px solid #4caf50;
-        padding: 1rem;
-        border-radius: 5px;
-        margin: 1rem 0;
+        background-color: #e8f5e8 !important;
+        border-left: 5px solid #4caf50 !important;
+        padding: 1.5rem !important;
+        border-radius: 10px !important;
+        margin: 1rem 0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
+    
+    /* Metric cards */
     .metric-card {
-        background-color: #f8f9fa;
-        padding: 1rem;
-        border-radius: 10px;
-        border: 1px solid #dee2e6;
-        text-align: center;
-        margin: 0.5rem 0;
+        background-color: #f8f9fa !important;
+        padding: 1.5rem !important;
+        border-radius: 12px !important;
+        border: 1px solid #dee2e6 !important;
+        text-align: center !important;
+        margin: 0.5rem 0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
     }
+    
+    /* Tabs styling - Multiple selectors for better compatibility */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 2px;
+        gap: 8px !important;
+        border-bottom: 2px solid #e1e5e9 !important;
+        margin-bottom: 1rem !important;
     }
+    
     .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #f1f3f6;
-        border-radius: 5px 5px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        height: 60px !important;
+        padding: 12px 24px !important;
+        background-color: #f8f9fa !important;
+        border-radius: 8px 8px 0 0 !important;
+        border: 1px solid #dee2e6 !important;
+        border-bottom: none !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
     }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #e9ecef !important;
+        transform: translateY(-2px) !important;
+    }
+    
     .stTabs [aria-selected="true"] {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
+        border-color: #1f77b4 !important;
+        color: #1f77b4 !important;
+        font-weight: 600 !important;
+        box-shadow: 0 -2px 8px rgba(31, 119, 180, 0.1) !important;
+    }
+    
+    /* Sidebar styling */
+    .css-1d391kg {
+        background-color: #f8f9fa !important;
+    }
+    
+    /* Button styling */
+    .stButton > button {
+        background: linear-gradient(135deg, #1f77b4, #2e8b57) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.75rem 2rem !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 8px rgba(31, 119, 180, 0.3) !important;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 12px rgba(31, 119, 180, 0.4) !important;
+    }
+    
+    /* Selectbox styling */
+    .stSelectbox > div > div {
+        border-radius: 8px !important;
+        border: 2px solid #e1e5e9 !important;
+    }
+    
+    .stSelectbox > div > div:focus-within {
+        border-color: #1f77b4 !important;
+        box-shadow: 0 0 0 2px rgba(31, 119, 180, 0.2) !important;
+    }
+    
+    /* Slider styling */
+    .stSlider > div > div > div {
+        color: #1f77b4 !important;
+    }
+    
+    /* Success message styling */
+    .stSuccess {
+        background-color: #d4edda !important;
+        border: 1px solid #c3e6cb !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+    }
+    
+    /* Error message styling */
+    .stError {
+        background-color: #f8d7da !important;
+        border: 1px solid #f5c6cb !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+    }
+    
+    /* Info message styling */
+    .stInfo {
+        background-color: #d1ecf1 !important;
+        border: 1px solid #bee5eb !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+    }
+    
+    /* Container padding */
+    .block-container {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Custom spacing */
+    .element-container {
+        margin-bottom: 1rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -640,33 +753,33 @@ def display_risk_assessment(risk_level, prob_dict, probabilities):
     """Display risk assessment results"""
     st.markdown("## 🎯 Your Surgery Risk Assessment")
     
-    # Main risk display
+    # Main risk display with inline styles for better compatibility
     if risk_level == "High":
         st.markdown(f"""
-        <div class="risk-high">
-            <h2>⚠️ HIGH RISK</h2>
-            <p><strong>Your assessment indicates a HIGH risk for diabetes-related surgery complications.</strong></p>
-            <p>We strongly recommend immediate consultation with your healthcare provider to discuss risk management strategies.</p>
+        <div style="background-color: #ffebee; border-left: 5px solid #f44336; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: #d32f2f; margin: 0 0 1rem 0; font-weight: 700;">⚠️ HIGH RISK</h2>
+            <p style="color: #333; font-size: 1.1rem; font-weight: 600; margin: 0.5rem 0;">Your assessment indicates a HIGH risk for diabetes-related surgery complications.</p>
+            <p style="color: #666; margin: 0.5rem 0;">We strongly recommend immediate consultation with your healthcare provider to discuss risk management strategies.</p>
         </div>
         """, unsafe_allow_html=True)
         risk_color = "red"
         risk_emoji = "🔴"
     elif risk_level == "Moderate":
         st.markdown(f"""
-        <div class="risk-moderate">
-            <h2>⚠️ MODERATE RISK</h2>
-            <p><strong>Your assessment indicates a MODERATE risk for diabetes-related surgery complications.</strong></p>
-            <p>Consider discussing your health status with your healthcare provider before any planned surgeries.</p>
+        <div style="background-color: #fff3e0; border-left: 5px solid #ff9800; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: #f57c00; margin: 0 0 1rem 0; font-weight: 700;">⚠️ MODERATE RISK</h2>
+            <p style="color: #333; font-size: 1.1rem; font-weight: 600; margin: 0.5rem 0;">Your assessment indicates a MODERATE risk for diabetes-related surgery complications.</p>
+            <p style="color: #666; margin: 0.5rem 0;">Consider discussing your health status with your healthcare provider before any planned surgeries.</p>
         </div>
         """, unsafe_allow_html=True)
         risk_color = "orange"
         risk_emoji = "🟡"
     else:  # Low
         st.markdown(f"""
-        <div class="risk-low">
-            <h2>✅ LOW RISK</h2>
-            <p><strong>Your assessment indicates a LOW risk for diabetes-related surgery complications.</strong></p>
-            <p>Continue maintaining your current health practices and regular medical check-ups.</p>
+        <div style="background-color: #e8f5e8; border-left: 5px solid #4caf50; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: #388e3c; margin: 0 0 1rem 0; font-weight: 700;">✅ LOW RISK</h2>
+            <p style="color: #333; font-size: 1.1rem; font-weight: 600; margin: 0.5rem 0;">Your assessment indicates a LOW risk for diabetes-related surgery complications.</p>
+            <p style="color: #666; margin: 0.5rem 0;">Continue maintaining your current health practices and regular medical check-ups.</p>
         </div>
         """, unsafe_allow_html=True)
         risk_color = "green"
@@ -686,7 +799,7 @@ def display_risk_assessment(risk_level, prob_dict, probabilities):
                     delta=None
                 )
             else:
-                st.write(f"**{risk}:** {confidence:.1f}%")
+                st.markdown(f"**{risk}:** {confidence:.1f}%")
     
     with col2:
         # Create probability chart
@@ -694,20 +807,33 @@ def display_risk_assessment(risk_level, prob_dict, probabilities):
             go.Bar(
                 x=list(prob_dict.keys()),
                 y=list(prob_dict.values()),
-                marker_color=['red' if k=='High' else 'orange' if k=='Moderate' else 'green' for k in prob_dict.keys()],
+                marker_color=['#f44336' if k=='High' else '#ff9800' if k=='Moderate' else '#4caf50' for k in prob_dict.keys()],
                 text=[f"{v*100:.1f}%" for v in prob_dict.values()],
                 textposition='auto',
+                textfont=dict(color='white', size=14, family='Inter'),
             )
         ])
         
         fig.update_layout(
-            title="Risk Probability Distribution",
+            title={
+                'text': "Risk Probability Distribution",
+                'x': 0.5,
+                'xanchor': 'center',
+                'font': {'size': 18, 'family': 'Inter', 'color': '#333'}
+            },
             xaxis_title="Risk Level",
             yaxis_title="Probability",
             yaxis=dict(tickformat='.0%'),
             height=400,
-            showlegend=False
+            showlegend=False,
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            font=dict(family='Inter', color='#333'),
+            margin=dict(l=50, r=50, t=80, b=50)
         )
+        
+        fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='rgba(0,0,0,0.1)')
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(0,0,0,0.1)')
         
         st.plotly_chart(fig, use_container_width=True)
 
@@ -784,15 +910,20 @@ def generate_recommendations(patient_data, risk_level):
     # Display recommendations
     if recommendations:
         for rec in recommendations:
-            priority_color = "red" if rec['priority'] == 'High' else "orange" if rec['priority'] == 'Medium' else "green"
+            priority_color = "#f44336" if rec['priority'] == 'High' else "#ff9800" if rec['priority'] == 'Medium' else "#4caf50"
+            bg_color = "#ffebee" if rec['priority'] == 'High' else "#fff3e0" if rec['priority'] == 'Medium' else "#e8f5e8"
             st.markdown(f"""
-            <div style="border-left: 4px solid {priority_color}; padding: 1rem; margin: 1rem 0; background-color: #f8f9fa; border-radius: 5px;">
-                <h4>{rec['category']} - <span style="color: {priority_color};">{rec['priority']} Priority</span></h4>
-                <p>{rec['recommendation']}</p>
+            <div style="border-left: 4px solid {priority_color}; padding: 1.5rem; margin: 1rem 0; background-color: {bg_color}; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h4 style="margin: 0 0 0.5rem 0; color: #333; font-weight: 600;">{rec['category']} - <span style="color: {priority_color}; font-weight: 700;">{rec['priority']} Priority</span></h4>
+                <p style="margin: 0; color: #666; line-height: 1.5;">{rec['recommendation']}</p>
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.success("🎉 Great job! You're maintaining excellent health habits.")
+        st.markdown("""
+        <div style="background-color: #e8f5e8; border-left: 4px solid #4caf50; padding: 1.5rem; margin: 1rem 0; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h4 style="margin: 0 0 0.5rem 0; color: #388e3c; font-weight: 600;">🎉 Great job! You're maintaining excellent health habits.</h4>
+        </div>
+        """, unsafe_allow_html=True)
 
 def display_model_info(model_results):
     """Display information about the AI model"""
@@ -834,7 +965,11 @@ def main():
     """Main application function"""
     
     # Header
-    st.markdown('<div class="main-header">🏥 Diabetes Surgery Risk Assessment Tool</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div style="font-size: 2.5rem; color: #1f77b4; text-align: center; margin-bottom: 2rem; font-weight: 700; font-family: 'Inter', sans-serif;">
+        🏥 Diabetes Surgery Risk Assessment Tool
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
     Welcome to our comprehensive diabetes surgery risk assessment tool. This application uses state-of-the-art 
@@ -853,25 +988,49 @@ def main():
     
     # Sidebar with information
     with st.sidebar:
-        st.markdown("## ℹ️ Information")
         st.markdown("""
-        ### What is assessed?
-        - Medical conditions
-        - Lifestyle factors  
-        - Mental & physical health
-        - Demographics
+        <div style="background: linear-gradient(135deg, #1f77b4, #2e8b57); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+            <h2 style="color: white; margin: 0; text-align: center; font-weight: 600;">ℹ️ Information</h2>
+        </div>
+        """, unsafe_allow_html=True)
         
-        ### Risk levels:
-        - 🟢 **Low Risk**: Minimal complications expected
-        - 🟡 **Moderate Risk**: Some precautions needed
-        - 🔴 **High Risk**: Careful evaluation required
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; border: 1px solid #dee2e6;">
+            <h3 style="color: #333; margin-top: 0; font-weight: 600;">What is assessed?</h3>
+            <ul style="color: #666; line-height: 1.6;">
+                <li>Medical conditions</li>
+                <li>Lifestyle factors</li>
+                <li>Mental & physical health</li>
+                <li>Demographics</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
         
-        ### Data Privacy
-        Your information is processed locally and not stored or shared.
-        """)
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; border: 1px solid #dee2e6;">
+            <h3 style="color: #333; margin-top: 0; font-weight: 600;">Risk levels:</h3>
+            <ul style="color: #666; line-height: 1.8; list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;"><span style="color: #4caf50; font-weight: 600;">🟢 Low Risk:</span> Minimal complications expected</li>
+                <li style="margin-bottom: 0.5rem;"><span style="color: #ff9800; font-weight: 600;">🟡 Moderate Risk:</span> Some precautions needed</li>
+                <li style="margin-bottom: 0.5rem;"><span style="color: #f44336; font-weight: 600;">🔴 High Risk:</span> Careful evaluation required</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style="background-color: #e3f2fd; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; border: 1px solid #bbdefb;">
+            <h3 style="color: #1976d2; margin-top: 0; font-weight: 600;">🔒 Data Privacy</h3>
+            <p style="color: #666; line-height: 1.6; margin: 0;">Your information is processed locally and not stored or shared.</p>
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("---")
-        st.markdown("**Need help?** Contact your healthcare provider.")
+        st.markdown("""
+        <div style="text-align: center; padding: 1rem; background-color: #fff3e0; border-radius: 8px; border: 1px solid #ffcc02;">
+            <p style="margin: 0; color: #e65100; font-weight: 600;">📞 Need help?</p>
+            <p style="margin: 0; color: #666;">Contact your healthcare provider.</p>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Collect patient data
     patient_data = collect_patient_data()
@@ -944,9 +1103,10 @@ def main():
     # Footer
     st.markdown("---")
     st.markdown("""
-    <div style="text-align: center; color: #666; padding: 2rem;">
-        <p>🏥 Diabetes Surgery Risk Assessment Tool | Powered by Advanced Machine Learning</p>
-        <p><small>For educational purposes only. Always consult with healthcare professionals.</small></p>
+    <div style="text-align: center; color: #666; padding: 2rem; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; margin-top: 2rem;">
+        <h3 style="margin: 0 0 0.5rem 0; color: #1f77b4; font-weight: 600;">🏥 Diabetes Surgery Risk Assessment Tool</h3>
+        <p style="margin: 0 0 0.5rem 0; font-weight: 500;">Powered by Advanced Machine Learning</p>
+        <p style="margin: 0; font-size: 0.9rem; color: #888;"><em>For educational purposes only. Always consult with healthcare professionals.</em></p>
     </div>
     """, unsafe_allow_html=True)
 
