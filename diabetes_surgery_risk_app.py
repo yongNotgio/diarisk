@@ -20,12 +20,26 @@ from plotly.subplots import make_subplots
 import warnings
 from pathlib import Path
 import time
+from io import BytesIO
+from datetime import datetime
 
 # Import required scikit-learn components
 try:
     from sklearn.preprocessing import StandardScaler, LabelEncoder
 except ImportError as e:
     st.error(f"Missing required dependency: {e}")
+    st.stop()
+
+# Import PDF generation components
+try:
+    from reportlab.lib.pagesizes import letter, A4
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import inch
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+    from reportlab.lib import colors
+    from reportlab.lib.enums import TA_CENTER, TA_LEFT
+except ImportError as e:
+    st.error(f"Missing PDF generation dependency: {e}")
     st.stop()
 
 # Configure page
@@ -579,6 +593,192 @@ def predict_risk(patient_data, model, scaler, label_encoder, feature_names):
         st.error(f"Error making prediction: {str(e)}")
         return None, None, None
 
+def generate_pdf_report(patient_data, risk_level, prob_dict):
+    """Generate a mobile-friendly PDF report"""
+    buffer = BytesIO()
+    
+    # Create PDF document with portrait orientation (mobile-friendly)
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=letter,
+        rightMargin=0.5*inch,
+        leftMargin=0.5*inch,
+        topMargin=0.5*inch,
+        bottomMargin=0.5*inch
+    )
+    
+    # Get styles
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle(
+        'CustomTitle',
+        parent=styles['Heading1'],
+        fontSize=18,
+        textColor=colors.blue,
+        alignment=TA_CENTER,
+        spaceAfter=20
+    )
+    
+    heading_style = ParagraphStyle(
+        'CustomHeading',
+        parent=styles['Heading2'],
+        fontSize=14,
+        textColor=colors.darkblue,
+        spaceBefore=15,
+        spaceAfter=10
+    )
+    
+    normal_style = styles['Normal']
+    normal_style.fontSize = 10
+    
+    # Build story (content)
+    story = []
+    
+    # Title
+    story.append(Paragraph("🏥 Diabetes Surgery Risk Assessment Report", title_style))
+    story.append(Spacer(1, 20))
+    
+    # Assessment date
+    assessment_date = datetime.now().strftime('%B %d, %Y at %I:%M %p')
+    story.append(Paragraph(f"<b>Assessment Date:</b> {assessment_date}", normal_style))
+    story.append(Spacer(1, 15))
+    
+    # Risk level section
+    story.append(Paragraph("Risk Assessment Results", heading_style))
+    
+    # Risk level with appropriate styling
+    if risk_level == "High":
+        risk_color = colors.red
+        risk_text = "⚠️ HIGH RISK"
+        risk_description = "Your assessment indicates a HIGH risk for diabetes-related surgery complications. We strongly recommend immediate consultation with your healthcare provider to discuss risk management strategies."
+    elif risk_level == "Moderate":
+        risk_color = colors.orange
+        risk_text = "⚠️ MODERATE RISK"
+        risk_description = "Your assessment indicates a MODERATE risk for diabetes-related surgery complications. Consider discussing your health status with your healthcare provider before any planned surgeries."
+    else:
+        risk_color = colors.green
+        risk_text = "✅ LOW RISK"
+        risk_description = "Your assessment indicates a LOW risk for diabetes-related surgery complications. Continue maintaining your current health practices and regular medical check-ups."
+    
+    risk_style = ParagraphStyle(
+        'RiskStyle',
+        parent=normal_style,
+        fontSize=14,
+        textColor=risk_color,
+        alignment=TA_CENTER,
+        spaceBefore=10,
+        spaceAfter=10
+    )
+    
+    story.append(Paragraph(risk_text, risk_style))
+    story.append(Paragraph(risk_description, normal_style))
+    story.append(Spacer(1, 15))
+    
+    # Risk probabilities
+    story.append(Paragraph("Risk Probability Breakdown", heading_style))
+    prob_data = [['Risk Level', 'Probability']]
+    for risk, prob in prob_dict.items():
+        prob_data.append([risk, f"{prob*100:.1f}%"])
+    
+    prob_table = Table(prob_data, colWidths=[2*inch, 1.5*inch])
+    prob_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 12),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+    ]))
+    
+    story.append(prob_table)
+    story.append(Spacer(1, 20))
+    
+    # Health profile summary
+    story.append(Paragraph("Your Health Profile", heading_style))
+    
+    # Get feature info for readable labels
+    feature_info = get_feature_info()
+    
+    # Create a summary of key health indicators
+    health_data = [['Health Indicator', 'Your Response']]
+    
+    key_features = ['Diabetes_binary', 'HighBP', 'HighChol', 'BMI', 'Smoker', 
+                   'PhysActivity', 'GenHlth', 'Age', 'Sex']
+    
+    for feature in key_features:
+        if feature in patient_data and feature in feature_info:
+            info = feature_info[feature]
+            value = patient_data[feature]
+            
+            # Format the value for display
+            if info['type'] == 'binary':
+                display_value = info['options'][value] if value < len(info['options']) else str(value)
+            elif info['type'] == 'scale' and 'options' in info:
+                try:
+                    idx = info['values'].index(value)
+                    display_value = info['options'][idx]
+                except (ValueError, IndexError):
+                    display_value = str(value)
+            else:
+                display_value = str(value)
+            
+            # Clean up the question for display
+            question = info['question'].replace('Do you have', '').replace('Have you', '').replace('?', '').strip()
+            if feature == 'BMI':
+                question = 'BMI'
+            elif feature == 'GenHlth':
+                question = 'General Health'
+            elif feature == 'PhysActivity':
+                question = 'Physical Activity'
+            elif feature == 'Diabetes_binary':
+                question = 'Diabetes/Prediabetes'
+            
+            health_data.append([question, display_value])
+    
+    health_table = Table(health_data, colWidths=[2.5*inch, 2*inch])
+    health_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, 0), 10),
+        ('FONTSIZE', (0, 1), (-1, -1), 9),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 8),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.white),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP')
+    ]))
+    
+    story.append(health_table)
+    story.append(Spacer(1, 20))
+    
+    # Disclaimer
+    story.append(Paragraph("Important Disclaimer", heading_style))
+    disclaimer_text = """
+    This assessment is for educational purposes only and does not replace professional medical advice. 
+    Always consult with your healthcare provider before making any medical decisions. This assessment 
+    is based on general population patterns and may not reflect your individual medical situation.
+    """
+    story.append(Paragraph(disclaimer_text, normal_style))
+    
+    # Footer
+    story.append(Spacer(1, 30))
+    footer_style = ParagraphStyle(
+        'Footer',
+        parent=normal_style,
+        fontSize=8,
+        textColor=colors.grey,
+        alignment=TA_CENTER
+    )
+    story.append(Paragraph("Generated by Diabetes Surgery Risk Assessment Tool", footer_style))
+    story.append(Paragraph("Powered by Advanced Machine Learning", footer_style))
+    
+    # Build PDF
+    doc.build(story)
+    buffer.seek(0)
+    return buffer
+
 def display_risk_assessment(risk_level, prob_dict, probabilities):
     """Display risk assessment results"""
     st.markdown("## 🎯 Your Surgery Risk Assessment")
@@ -822,42 +1022,25 @@ def main():
                     # Download report option
                     st.markdown("---")
                     st.markdown("### 📄 Save Your Assessment")
+                    st.markdown("Download a comprehensive PDF report optimized for mobile viewing:")
                     
-                    # Create a summary report
-                    report_data = {
-                        'Assessment Date': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S'),
-                        'Risk Level': risk_level,
-                        'High Risk Probability': f"{prob_dict.get('High', 0)*100:.1f}%",
-                        'Moderate Risk Probability': f"{prob_dict.get('Moderate', 0)*100:.1f}%",
-                        'Low Risk Probability': f"{prob_dict.get('Low', 0)*100:.1f}%"
-                    }
-                    
-                    # Add selected health indicators
-                    feature_info = get_feature_info()
-                    for feature, value in patient_data.items():
-                        if feature in feature_info:
-                            info = feature_info[feature]
-                            if info['type'] == 'binary':
-                                display_value = info['options'][value] if value < len(info['options']) else str(value)
-                            elif info['type'] == 'scale' and 'options' in info:
-                                try:
-                                    idx = info['values'].index(value)
-                                    display_value = info['options'][idx]
-                                except (ValueError, IndexError):
-                                    display_value = str(value)
-                            else:
-                                display_value = str(value)
-                            report_data[feature] = display_value
-                    
-                    report_df = pd.DataFrame([report_data])
-                    
-                    csv = report_df.to_csv(index=False)
-                    st.download_button(
-                        label="📥 Download Assessment Report (CSV)",
-                        data=csv,
-                        file_name=f"diabetes_surgery_risk_assessment_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                        mime="text/csv"
-                    )
+                    # Generate PDF report
+                    try:
+                        pdf_buffer = generate_pdf_report(patient_data, risk_level, prob_dict)
+                        
+                        st.download_button(
+                            label="📱 Download PDF Report (Mobile Optimized)",
+                            data=pdf_buffer,
+                            file_name=f"diabetes_surgery_risk_assessment_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
+                            mime="application/pdf",
+                            use_container_width=True
+                        )
+                        
+                        st.info("💡 **Tip:** This PDF is optimized for mobile viewing and can be easily shared with your healthcare provider.")
+                        
+                    except Exception as e:
+                        st.error(f"Error generating PDF report: {e}")
+                        st.info("PDF generation is temporarily unavailable. Please screenshot your results if needed.")
                     
         else:
             st.error("Please complete all questions before generating assessment.")
