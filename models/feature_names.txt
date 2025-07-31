@@ -1,0 +1,1 @@
+HighBP\nHighChol\nCholCheck\nBMI\nSmoker\nStroke\nHeartDiseaseorAttack\nPhysActivity\nFruits\nVeggies\nHvyAlcoholConsump\nAnyHealthcare\nNoDocbcCost\nGenHlth\nMentHlth\nPhysHlth\nDiffWalk\nSex\nAge\nEducation\nIncome\nDiabetes_binary\n
