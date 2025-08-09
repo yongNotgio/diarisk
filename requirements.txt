@@ -8,3 +8,7 @@ xgboost>=1.7.0
 lightgbm>=4.0.0
 catboost>=1.2.0
 reportlab>=4.0.0
+
+fastapi
+uvicorn
+pydantic
