@@ -1,0 +1,30 @@
+[
+  {
+    "age": 30,
+    "glucose": 5.0,
+    "systolic_bp": 100,
+    "bmi": 20.0,
+    "comorbidities": 0
+  },
+  {
+    "age": 45,
+    "glucose": 7.0,
+    "systolic_bp": 120,
+    "bmi": 25.0,
+    "comorbidities": 1
+  },
+  {
+    "age": 60,
+    "glucose": 10.0,
+    "systolic_bp": 150,
+    "bmi": 30.0,
+    "comorbidities": 3
+  },
+  {
+    "age": 75,
+    "glucose": 14.0,
+    "systolic_bp": 170,
+    "bmi": 33.0,
+    "comorbidities": 4
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "age": 55,
+  "glucose": 8.5,
+  "systolic_bp": 130,
+  "bmi": 28.0,
+  "comorbidities": 2,
+  "family_diabetes": true,
+  "hypertensive": true,
+  "cardiovascular": false,
+  "stroke": false,
+  "family_hypertension": false
+}

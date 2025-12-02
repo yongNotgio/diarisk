@@ -1,0 +1,352 @@
+[
+    {
+        "rule_number": 1,
+        "rule_string": "IF (age[elderly] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 1: IF (age[elderly] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 2,
+        "rule_string": "IF (age[elderly] AND glucose[high]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 2: IF (age[elderly] AND glucose[high]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 3,
+        "rule_string": "IF (glucose[high] AND systolic_bp[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 3: IF (glucose[high] AND systolic_bp[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 4,
+        "rule_string": "IF (age[elderly] AND systolic_bp[high]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 4: IF (age[elderly] AND systolic_bp[high]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 5,
+        "rule_string": "IF (glucose[high] AND bmi[obese]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 5: IF (glucose[high] AND bmi[obese]) AND comorbidities[many] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 6,
+        "rule_string": "IF (age[elderly] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 6: IF (age[elderly] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 7,
+        "rule_string": "IF (age[middle] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 7: IF (age[middle] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 8,
+        "rule_string": "IF (glucose[high] AND systolic_bp[elevated]) AND comorbidities[few] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 8: IF (glucose[high] AND systolic_bp[elevated]) AND comorbidities[few] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 9,
+        "rule_string": "IF (age[elderly] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 9: IF (age[elderly] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 10,
+        "rule_string": "IF (age[elderly] AND bmi[obese]) AND glucose[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 10: IF (age[elderly] AND bmi[obese]) AND glucose[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 11,
+        "rule_string": "IF (glucose[high] AND bmi[overweight]) AND systolic_bp[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 11: IF (glucose[high] AND bmi[overweight]) AND systolic_bp[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 12,
+        "rule_string": "IF (age[middle] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 12: IF (age[middle] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 13,
+        "rule_string": "IF (age[elderly] AND glucose[normal]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 13: IF (age[elderly] AND glucose[normal]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 14,
+        "rule_string": "IF (glucose[elevated] AND bmi[obese]) AND comorbidities[few] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 14: IF (glucose[elevated] AND bmi[obese]) AND comorbidities[few] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 15,
+        "rule_string": "IF (age[middle] AND glucose[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 15: IF (age[middle] AND glucose[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 16,
+        "rule_string": "IF (glucose[elevated] AND systolic_bp[elevated]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 16: IF (glucose[elevated] AND systolic_bp[elevated]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 17,
+        "rule_string": "IF (age[elderly] AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 17: IF (age[elderly] AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 18,
+        "rule_string": "IF (age[middle] AND glucose[normal]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 18: IF (age[middle] AND glucose[normal]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 19,
+        "rule_string": "IF (glucose[elevated] AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 19: IF (glucose[elevated] AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 20,
+        "rule_string": "IF ((age[elderly] AND glucose[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 20: IF ((age[elderly] AND glucose[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 21,
+        "rule_string": "IF ((glucose[high] AND age[young]) AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 21: IF ((glucose[high] AND age[young]) AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 22,
+        "rule_string": "IF ((systolic_bp[high] AND age[young]) AND glucose[normal]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 22: IF ((systolic_bp[high] AND age[young]) AND glucose[normal]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 23,
+        "rule_string": "IF ((age[middle] AND bmi[obese]) AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 23: IF ((age[middle] AND bmi[obese]) AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 24,
+        "rule_string": "IF ((comorbidities[many] AND age[young]) AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 24: IF ((comorbidities[many] AND age[young]) AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 25,
+        "rule_string": "IF ((bmi[overweight] AND systolic_bp[elevated]) AND glucose[normal]) AND age[young] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 25: IF ((bmi[overweight] AND systolic_bp[elevated]) AND glucose[normal]) AND age[young] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 26,
+        "rule_string": "IF (age[young] AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 26: IF (age[young] AND glucose[normal]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 27,
+        "rule_string": "IF ((age[young] AND glucose[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 27: IF ((age[young] AND glucose[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 28,
+        "rule_string": "IF ((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 28: IF ((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 29,
+        "rule_string": "IF (((age[young] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 29: IF (((age[young] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 30,
+        "rule_string": "IF (((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 30: IF (((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 31,
+        "rule_string": "IF ((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 31: IF ((age[middle] AND glucose[normal]) AND systolic_bp[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 32,
+        "rule_string": "IF (((age[young] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[overweight]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 32: IF (((age[young] AND glucose[normal]) AND systolic_bp[normal]) AND bmi[overweight]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 33,
+        "rule_string": "IF (((age[young] AND glucose[normal]) AND systolic_bp[elevated]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 33: IF (((age[young] AND glucose[normal]) AND systolic_bp[elevated]) AND bmi[normal]) AND comorbidities[none] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 34,
+        "rule_string": "IF (age[elderly] AND glucose[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 34: IF (age[elderly] AND glucose[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 35,
+        "rule_string": "IF (age[elderly] AND glucose[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 35: IF (age[elderly] AND glucose[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 36,
+        "rule_string": "IF (age[elderly] AND glucose[normal]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 36: IF (age[elderly] AND glucose[normal]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 37,
+        "rule_string": "IF (age[elderly] AND glucose[normal]) AND bmi[obese] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 37: IF (age[elderly] AND glucose[normal]) AND bmi[obese] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 38,
+        "rule_string": "IF (age[elderly] AND systolic_bp[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 38: IF (age[elderly] AND systolic_bp[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 39,
+        "rule_string": "IF (age[elderly] AND systolic_bp[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 39: IF (age[elderly] AND systolic_bp[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 40,
+        "rule_string": "IF (age[elderly] AND systolic_bp[elevated]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 40: IF (age[elderly] AND systolic_bp[elevated]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 41,
+        "rule_string": "IF (age[middle] AND glucose[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 41: IF (age[middle] AND glucose[elevated]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 42,
+        "rule_string": "IF (age[middle] AND glucose[elevated]) AND bmi[obese] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 42: IF (age[middle] AND glucose[elevated]) AND bmi[obese] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 43,
+        "rule_string": "IF (age[middle] AND glucose[high]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 43: IF (age[middle] AND glucose[high]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 44,
+        "rule_string": "IF (age[middle] AND glucose[high]) AND bmi[overweight] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 44: IF (age[middle] AND glucose[high]) AND bmi[overweight] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 45,
+        "rule_string": "IF (age[middle] AND glucose[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 45: IF (age[middle] AND glucose[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 46,
+        "rule_string": "IF (age[middle] AND systolic_bp[high]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 46: IF (age[middle] AND systolic_bp[high]) AND bmi[normal] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 47,
+        "rule_string": "IF (age[middle] AND systolic_bp[high]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 47: IF (age[middle] AND systolic_bp[high]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 48,
+        "rule_string": "IF (age[middle] AND systolic_bp[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 48: IF (age[middle] AND systolic_bp[high]) AND bmi[obese] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 49,
+        "rule_string": "IF (age[middle] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 49: IF (age[middle] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 50,
+        "rule_string": "IF (age[young] AND glucose[elevated]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 50: IF (age[young] AND glucose[elevated]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 51,
+        "rule_string": "IF (age[young] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 51: IF (age[young] AND glucose[elevated]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 52,
+        "rule_string": "IF (age[young] AND glucose[elevated]) AND systolic_bp[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 52: IF (age[young] AND glucose[elevated]) AND systolic_bp[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 53,
+        "rule_string": "IF (age[young] AND glucose[high]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 53: IF (age[young] AND glucose[high]) AND systolic_bp[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 54,
+        "rule_string": "IF (age[young] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 54: IF (age[young] AND glucose[high]) AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 55,
+        "rule_string": "IF (age[young] AND bmi[obese]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 55: IF (age[young] AND bmi[obese]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 56,
+        "rule_string": "IF (age[young] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 56: IF (age[young] AND bmi[obese]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 57,
+        "rule_string": "IF (age[young] AND bmi[obese]) AND glucose[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 57: IF (age[young] AND bmi[obese]) AND glucose[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 58,
+        "rule_string": "IF (age[young] AND bmi[overweight]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 58: IF (age[young] AND bmi[overweight]) AND systolic_bp[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 59,
+        "rule_string": "IF (age[young] AND bmi[overweight]) AND systolic_bp[elevated] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 59: IF (age[young] AND bmi[overweight]) AND systolic_bp[elevated] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 60,
+        "rule_string": "IF (age[young] AND bmi[overweight]) AND systolic_bp[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 60: IF (age[young] AND bmi[overweight]) AND systolic_bp[high] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 61,
+        "rule_string": "IF comorbidities[many] AND glucose[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 61: IF comorbidities[many] AND glucose[elevated] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 62,
+        "rule_string": "IF comorbidities[many] AND glucose[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 62: IF comorbidities[many] AND glucose[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 63,
+        "rule_string": "IF comorbidities[many] AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 63: IF comorbidities[many] AND systolic_bp[high] THEN surgical_risk[high]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 64,
+        "rule_string": "IF (comorbidities[few] AND age[middle]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 64: IF (comorbidities[few] AND age[middle]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 65,
+        "rule_string": "IF (comorbidities[few] AND age[young]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 65: IF (comorbidities[few] AND age[young]) AND glucose[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 66,
+        "rule_string": "IF (comorbidities[none] AND age[middle]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 66: IF (comorbidities[none] AND age[middle]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 67,
+        "rule_string": "IF (comorbidities[none] AND age[elderly]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 67: IF (comorbidities[none] AND age[elderly]) AND glucose[elevated] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 68,
+        "rule_string": "IF (glucose[normal] AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 68: IF (glucose[normal] AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 69,
+        "rule_string": "IF (glucose[elevated] AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 69: IF (glucose[elevated] AND systolic_bp[normal]) AND bmi[normal] THEN surgical_risk[low]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    },
+    {
+        "rule_number": 70,
+        "rule_string": "IF (glucose[normal] AND systolic_bp[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax",
+        "description": "Rule 70: IF (glucose[normal] AND systolic_bp[elevated]) AND bmi[overweight] THEN surgical_risk[moderate]\n\tAND aggregation function : fmin\n\tOR aggregation function  : fmax"
+    }
+]
